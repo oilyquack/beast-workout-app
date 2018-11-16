@@ -1,4 +1,5 @@
 import React from "react";
+import Session from "./Session";
 
 class Sessions extends React.Component {
   constructor(props) {
@@ -14,11 +15,7 @@ class Sessions extends React.Component {
       <section>
         <h2> Sessions: </h2>
         {Object.values(this.props.sessions).map(session => {
-          return (
-            <div key={session.id} className="session">
-              <h2>{session.name}</h2>
-            </div>
-          );
+          return <Session key={session.id} session={session} />;
         })}
       </section>
     );
