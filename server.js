@@ -17,8 +17,14 @@ app.use(bodyParser.json());
 app.use("/static", express.static("static"));
 app.set("view engine", "hbs");
 
-app.get("/", function(req, res) {
-  res.render("index", {});
+app.get("/", (req, res) => res.render("index", {}));
+
+app.get("/api/sessions", (req, res) => {
+  db.any(`SELECT * FROM training`)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => res.json({ error: error.message }));
 });
 
 app.listen(8080, function() {
