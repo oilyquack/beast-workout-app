@@ -5,16 +5,24 @@ const Nav = ({}) => (
   <header>
     <ul>
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <NavLink strict to={"/"}>
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/sessions"}>Sessions</NavLink>
+        <NavLink strict to={"/sessions"}>
+          Sessions
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/workouts"}>Workouts</NavLink>
+        <NavLink strict to={"/workouts"}>
+          Workouts
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/user"}>User</NavLink>
+        <NavLink strict to={"/user"}>
+          User
+        </NavLink>
       </li>
     </ul>
   </header>
