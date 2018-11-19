@@ -10,6 +10,12 @@ const Nav = ({}) => (
       <li>
         <NavLink to={"/sessions"}>Sessions</NavLink>
       </li>
+      <li>
+        <NavLink to={"/workouts"}>Workouts</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/user"}>User</NavLink>
+      </li>
     </ul>
   </header>
 );
