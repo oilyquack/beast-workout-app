@@ -14,9 +14,10 @@ class Sessions extends React.Component {
     return (
       <section>
         <h2> Sessions: </h2>
-        {Object.values(this.props.sessions).map(session => {
-          return <Session key={session.id} session={session} />;
-        })}
+        {this.props.sessions &&
+          Object.values(this.props.sessions).map(session => {
+            return <Session key={session.id} session={session} />;
+          })}
       </section>
     );
   }
