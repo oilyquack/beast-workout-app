@@ -25,8 +25,8 @@ app.get("/api/sessions", (req, res) => {
     .catch(error => res.json({ error: error.message }));
 });
 
+app.get("/*", (req, res) => res.render("index", {}));
+
 app.listen(8080, function() {
   console.log("Listening on port 8080!");
 });
-
-app.get("/*", (req, res) => res.render("index", {}));

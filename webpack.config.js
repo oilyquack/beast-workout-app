@@ -5,7 +5,8 @@ module.exports = {
   devtool: "source-map",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "static")
+    path: path.resolve(__dirname, "static"),
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -14,6 +15,9 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: require.resolve("babel-loader")
       }
-    ]
+    ],
+    devServer: {
+      historyApiFallback: true
+    }
   }
 };
