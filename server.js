@@ -17,8 +17,6 @@ app.use(bodyParser.json());
 app.use("/static", express.static("static"));
 app.set("view engine", "hbs");
 
-app.get("/", (req, res) => res.render("index", {}));
-
 app.get("/api/sessions", (req, res) => {
   db.any(`SELECT * FROM training`)
     .then(data => {
@@ -30,3 +28,5 @@ app.get("/api/sessions", (req, res) => {
 app.listen(8080, function() {
   console.log("Listening on port 8080!");
 });
+
+app.get("/*", (req, res) => res.render("index", {}));
