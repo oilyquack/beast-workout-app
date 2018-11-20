@@ -3,7 +3,10 @@ import UserEntry from "../components/UserEntry";
 import { registerUserToDb } from "../actions";
 
 export const mapStateToProps = state => {
-  return {};
+  return {
+    loggedIn: state.UserReducer.loggedIn,
+    userId: state.UserReducer.userId
+  };
 };
 
 export const mapDispatchToProps = dispatch => {
