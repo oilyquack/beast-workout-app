@@ -9,10 +9,12 @@ const signUpSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email")
     .required("Email required"),
-  password: Yup.string().required("Password required")
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password required")
 });
 
-const UserEntry = ({}) => (
+const UserEntry = ({ sendRegisterUserInfo, history }) => (
   <div>
     <Formik
       initialValues={{
@@ -24,36 +26,31 @@ const UserEntry = ({}) => (
       }}
       validationSchema={signUpSchema}
       onSubmit={values => {
-        console.log(values);
+        sendRegisterUserInfo(values);
+        history.push("/sessions");
       }}
     >
       {({ errors, touched }) => (
         <Form>
           <Field name="firstName" />
-          {errors.firstName && touched.firstName ? (
-            <div>{errors.firstName}</div>
-          ) : null}
-          {/* <ErrorMessage name="firstName" /> */}
+
+          <ErrorMessage name="firstName" />
 
           <Field name="lastName" />
-          {errors.lastName && touched.lastName ? (
-            <div>{errors.lastName}</div>
-          ) : null}
-          {/* <ErrorMessage name="lastName" /> */}
+
+          <ErrorMessage name="lastName" />
 
           <Field name="dob" type="date" />
-          {errors.dob && touched.dob ? <div>{errors.dob}</div> : null}
-          {/* <ErrorMessage name="dob" /> */}
+
+          <ErrorMessage name="dob" />
 
           <Field name="email" type="email" />
-          {errors.email && touched.email ? <div>{errors.email}</div> : null}
-          {/* <ErrorMessage name="email" /> */}
+
+          <ErrorMessage name="email" />
 
           <Field name="password" type="password" />
-          {errors.password && touched.password ? (
-            <div>{errors.password}</div>
-          ) : null}
-          {/* <ErrorMessage name="password" /> */}
+
+          <ErrorMessage name="password" />
 
           <button type="submit">Submit</button>
         </Form>
