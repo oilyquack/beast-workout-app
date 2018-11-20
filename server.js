@@ -38,12 +38,12 @@ app.post("/api/register", (req, res) => {
         `
     INSERT INTO beastuser (fname, lname, dob, email, hashedpassword)
     VALUES ($1, $2, $3, $4, $5)
-    RETURNING id`,
+    RETURNING id, fname`,
         [firstName, lastName, dob, email, hash]
       );
     })
     .then(result => {
-      res.json({ id: result.id });
+      res.json({ id: result.id, firstName: result.fname });
     })
     .catch(error => res.json({ error: error.message }));
 });

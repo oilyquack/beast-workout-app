@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Nav = ({ loggedIn, userId }) => (
+const Nav = ({ loggedIn, userId, userName }) => (
   <header>
     {!loggedIn ? (
       <ul>
@@ -35,7 +35,7 @@ const Nav = ({ loggedIn, userId }) => (
         </li>
         <li>
           <NavLink strict to={"/user"}>
-            {userId}
+            Hello, {userName}!
           </NavLink>
         </li>
       </ul>
