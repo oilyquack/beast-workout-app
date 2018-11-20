@@ -24,6 +24,11 @@ const Nav = ({}) => (
           User
         </NavLink>
       </li>
+      <li>
+        <NavLink strict to={"/login"}>
+          Login
+        </NavLink>
+      </li>
     </ul>
   </header>
 );

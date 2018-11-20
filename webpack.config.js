@@ -15,9 +15,6 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: require.resolve("babel-loader")
       }
-    ],
-    devServer: {
-      historyApiFallback: true
-    }
+    ]
   }
 };
