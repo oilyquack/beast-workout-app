@@ -1,15 +1,16 @@
 import { connect } from "react-redux";
-import UserEntry from "../components/UserEntry";
-import { registerUserToDb } from "../actions";
+import Login from "../components/Login";
+import { sendLoginToDb } from "../actions";
 
 export const mapStateToProps = state => {
+  console.log(state.UserReducer.loggedIn);
   return {};
 };
 
 export const mapDispatchToProps = dispatch => {
   return {
-    sendRegisterUserInfo: values => {
-      dispatch(registerUserToDb(values));
+    sendLoginUserInfo: values => {
+      dispatch(sendLoginToDb(values));
     }
   };
 };
@@ -17,4 +18,4 @@ export const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserEntry);
+)(Login);
