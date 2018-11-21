@@ -5,10 +5,31 @@ export function receiveSessions(sessions) {
   };
 }
 
-export function addUserToStore(user) {
+export function confirmRegistration(success) {
   return {
     type: "ADD_LOGGED_IN_USER",
-    user
+    registrationSuccessful: success
+  };
+}
+
+export function storeLoggedInUserData(userDetails) {
+  return {
+    type: "ADD_LOGGED_IN_USER_TO_STORE",
+    userDetails
+  };
+}
+
+export function validateUser(success) {
+  return {
+    type: "UPDATE_LOGGED_IN_STATUS",
+    loggedIn: success
+  };
+}
+
+export function addLoggedInUserToStore(success) {
+  return {
+    type: "ADD_REGISTRATION_SUCCESS",
+    registrationSuccessful: success
   };
 }
 
@@ -34,7 +55,36 @@ export function registerUserToDb(values) {
     })
       .then(response => response.json())
       .then(result => {
-        dispatch(addUserToStore(result));
+        dispatch(confirmRegistration(true));
+      })
+      .catch(error => {
+        ({ error: error.message });
+      });
+  };
+}
+
+export function sendLoginToDb(values) {
+  return function(dispatch, getState) {
+    fetch("/api/login", {
+      method: "post",
+      body: JSON.stringify({
+        username: values.email,
+        password: values.password
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        if (result.status === 200) {
+          console.log("200");
+          dispatch(validateUser(true));
+          dispatch(storeLoggedInUserData(result));
+        } else {
+          dispatch(validateUser(false));
+        }
       })
       .catch(error => {
         ({ error: error.message });

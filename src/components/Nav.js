@@ -12,7 +12,12 @@ const Nav = ({ loggedIn, userId, userName }) => (
         </li>
         <li>
           <NavLink strict to={"/login"}>
-            Register/Login
+            Login
+          </NavLink>
+        </li>
+        <li>
+          <NavLink strict to={"/register"}>
+            Register
           </NavLink>
         </li>
       </ul>

@@ -27,27 +27,32 @@ const UserEntry = ({ sendRegisterUserInfo, history }) => (
       validationSchema={signUpSchema}
       onSubmit={values => {
         sendRegisterUserInfo(values);
-        history.push("/sessions");
+        history.push("/login");
       }}
     >
       {({ errors, touched }) => (
         <Form>
+          <h2>First Name</h2>
           <Field name="firstName" />
 
           <ErrorMessage name="firstName" />
 
+          <h2>Last Name</h2>
           <Field name="lastName" />
 
           <ErrorMessage name="lastName" />
 
+          <h2>DOB</h2>
           <Field name="dob" type="date" />
 
           <ErrorMessage name="dob" />
 
+          <h2>Email</h2>
           <Field name="email" type="email" />
 
           <ErrorMessage name="email" />
 
+          <h2>Password</h2>
           <Field name="password" type="password" />
 
           <ErrorMessage name="password" />
